@@ -23,6 +23,15 @@ const router = createBrowserRouter([
       </div>
     ),
   },
+  {
+    path: "login",
+    element: (
+      <div>
+        <h1>LOGIN_PAGE</h1>
+        <Link to="/about">About</Link>
+      </div>
+    ),
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(
