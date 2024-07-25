@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     element: (
       <div>
         <h1>About-UPD</h1>
-        <Link to="/">Go back to home</Link>
+        <Link to="/login">Go to Login</Link>
       </div>
     ),
   },

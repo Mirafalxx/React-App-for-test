@@ -1,14 +1,32 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useEffect, useState } from "react";
+
 import "./App.css";
+import axios from "axios";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const getPostData = async (id) => {
+      setLoading(true);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/todos/${id}`);
+      setData(response.data);
+      setLoading(false);
+    };
+    getPostData(1);
+  }, []);
 
   return (
     <>
-      <div>Test Application</div>
+      {loading && !data ? (
+        <div>Loading Post ....</div>
+      ) : (
+        <div>
+          <h2>{data?.title}</h2>
+          <p>{data?.id}</p>
+        </div>
+      )}
     </>
   );
 }
